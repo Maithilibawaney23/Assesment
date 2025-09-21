@@ -1,0 +1,52 @@
+Assesment
+
+ 1) select * from employee_information
+
+ 2) select * from customer_info where state = 'Nevada';
+
+ 3) select count (*) as total_sales from sales_record
+
+ 4) select * from product_details where price > 100;
+
+ 5) select first_name, salary from employee_information
+
+ 6) insert into product_details (product_id,product_name,price, stock_quantity, supplier_id,recorder_level,discontinued category) 
+ values (201,'Laptop',750,50,'Electronic');
+
+ 7) update order_details set status ='completed' where order_id =5;
+
+ 8) delete from customer_info where customer_id =2
+
+9) select sale_id , sum (total_sale) as total_sale from sales_record  group by sale_id
+
+10) select pd.product_name, sr.quantity  from sales_record sr join product_details pd on sr.product_id = pd.product_id;
+
+11) select p.product_name , sum (s.total_sale) total_sales from sales_record sr product_details pd      on sr.product_id = pd.product_id group by pd.product_name order by total_sales desc          limit 5
+	
+ 12) select * from order_details where order_date >'2023-01-01'
+
+ 13) select distinct e. * from employee_information e join employee_information m on e.employee_id = m.manager_id
+
+ 15) select p.category, sum(s.total_sale) as total_revenue from sales_record s join product_details p on s.product_id =p.product_id
+      group by p.category
+	 
+ 16) select * from product_details where Discontinued ='true' and stock_quantity > 0
+
+ 17) select * from sales_record where discount > 0.15 order by total_sale desc;
+
+ 19) select * from sales_record where discount > 0.15 order by total_sale desc;
+
+ 20) select employee_id, avg (salary) as avg_salary from employee_information group by employee_id
+
+ 22) select distinct c.customer_id, first_name from customer_info c join order_details o on c.customer_id = o.customer_id 
+     left join sales_record s on o.order_id = o.order_id where o.order_id is null;
+
+23)  select * from product_details where product_id not in (select distinct product_id from sales_record)
+
+24) create index idx_sale_customer on sales_record (sale_id); create index idx_customers_customer 
+    on customer_info (customer_id)
+
+ 25) select salesperson_id, sum (total_sale) as total_sale, rank () over(order by sum (total_sale) desc) as rank_position 
+     from sales_record group by salesperson_id 
+
+
